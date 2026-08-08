@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz | Journey Compass</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+        <polygon points="20,6 24,20 20,18 16,20" fill="#CE1126"/>
+        <polygon points="20,34 24,20 20,22 16,20" fill="#4C7FE0"/>
+      </svg>
+      <span>Journey Compass</span>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="contact.html#about">About</a>
+      <a href="contact.html">Contact</a>
+
+      <!-- Live countdown display, updated every second by timer.js via quiz.js.
+           Takes the same visual "slot" the Start the Quiz button occupies on
+           every other page, so the header layout stays identical throughout. -->
+      <div class="timer-display" id="timer-display" role="timer" aria-live="polite">
+        <span class="timer-icon" aria-hidden="true">⏱</span>
+        <span id="timer-value">4:00</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="quiz-main">
+
+    <!-- ============ Progress indicator ============ -->
+    <div class="progress-area">
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-meta">
+        <span id="progress-label">Question 1 of 8</span>
+
+        <!-- Small compass needle that rotates as the student progresses,
+             tying the progress bar back to the site's visual identity -->
+        <svg class="progress-compass" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="17" fill="none" stroke="#E1E1DC" stroke-width="2"/>
+          <g id="progress-needle" style="transform-origin: 20px 20px;">
+            <polygon points="20,7 23,20 20,18 17,20" fill="#CE1126"/>
+            <polygon points="20,33 23,20 20,22 17,20" fill="#003DA5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ============ Question card — content is injected here by quiz.js ============ -->
+    <section class="question-card" id="question-card" aria-live="polite">
+      <p class="loading-text">Loading your quiz…</p>
+    </section>
+
+    <!-- ============ Timeout overlay — hidden until the timer hits zero ============ -->
+    <div class="timeout-overlay" id="timeout-overlay" hidden>
+      <div class="timeout-box">
+        <h2>Time's up!</h2>
+        <p>We've saved your answers so far and are calculating your results.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/timer.js"></script>
+  <script src="js/media.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

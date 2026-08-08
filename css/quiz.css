@@ -1,0 +1,282 @@
+/* ==========================================================================
+   Quiz Page Styles
+   ========================================================================== */
+
+.quiz-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+/* ============ Timer ============ */
+.timer-display {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-dark-border);
+  color: var(--color-text-on-dark);
+  transition: background-color var(--transition-mid), color var(--transition-mid), border-color var(--transition-mid);
+}
+
+/* Warning state, toggled by quiz.js once under 30 seconds remain —
+   pulses gently so it's noticeable without being alarming */
+.timer-display.timer-warning {
+  background-color: rgba(206, 17, 38, 0.15);
+  border-color: var(--color-red);
+  color: #FF8A8A;
+  animation: timer-pulse 1s ease-in-out infinite;
+}
+
+@keyframes timer-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ============ Progress bar + compass ============ */
+.progress-area {
+  margin-bottom: var(--space-lg);
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 12.5%; /* set dynamically by quiz.js, 1/8 as a starting default */
+  background: linear-gradient(90deg, var(--color-blue), var(--color-red));
+  border-radius: var(--radius-pill);
+  transition: width var(--transition-mid);
+}
+
+.progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#progress-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.progress-compass {
+  width: 28px;
+  height: 28px;
+}
+
+#progress-needle {
+  transition: transform var(--transition-mid);
+}
+
+/* ============ Question card ============ */
+.question-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 15px 40px -25px rgba(11, 18, 32, 0.2);
+  animation: card-in 350ms ease;
+}
+
+/* Small entrance animation each time a new question renders */
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loading-text {
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.question-type-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-blue);
+  background-color: #EEF3FC;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-sm);
+}
+
+.question-text {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  margin-bottom: var(--space-md);
+  line-height: 1.35;
+}
+
+/* ============ MCQ options ============ */
+.options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1.1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.option-btn:hover {
+  border-color: var(--color-blue-light);
+  background-color: #F7FAFF;
+}
+
+/* Selected state — brief visual confirmation before auto-advancing */
+.option-btn.selected {
+  border-color: var(--color-blue);
+  background-color: #EEF3FC;
+  transform: scale(0.99);
+}
+
+.option-btn:disabled {
+  cursor: not-allowed;
+}
+
+/* ============ Audio question ============ */
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+}
+
+.audio-btn {
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-blue);
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.audio-btn:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.audio-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ============ Hotspot question ============ */
+.hotspot-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-sm);
+  cursor: pointer;
+}
+
+.hotspot-wrap img {
+  width: 100%;
+  display: block;
+}
+
+.hotspot-feedback {
+  min-height: 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-blue);
+  text-align: center;
+}
+
+/* ============ Timeout overlay ============ */
+.timeout-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 18, 32, 0.6);
+  z-index: 50;
+  animation: overlay-in 250ms ease;
+  /* Deliberately NOT setting display here. A class rule in our own
+     stylesheet always overrides the browser's built-in
+     "[hidden] { display: none }" rule, no matter how specific the
+     selector is — author styles beat user-agent styles by default.
+     Setting display:flex directly on this class made the overlay
+     visible from page load, ignoring the "hidden" attribute entirely.
+     Scoping it to :not([hidden]) below fixes that. */
+}
+
+.timeout-overlay:not([hidden]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.timeout-box {
+  background-color: var(--color-white);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  max-width: 380px;
+}
+
+.timeout-box h2 {
+  color: var(--color-red);
+  margin-bottom: var(--space-xs);
+}
+
+.timeout-box p {
+  color: var(--color-text-muted);
+}
+
+/* Locks the whole quiz interface once time has expired */
+.quiz-locked .question-card,
+.quiz-locked .progress-area {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 600px) {
+  .quiz-main {
+    padding: var(--space-md);
+  }
+
+  .question-card {
+    padding: var(--space-md);
+  }
+
+  .question-text {
+    font-size: 1.15rem;
+  }
+}

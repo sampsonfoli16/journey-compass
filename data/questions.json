@@ -1,0 +1,109 @@
+{
+  "quizDurationSeconds": 240,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "text": "A teammate misunderstands your instructions on a group project. What's your first move?",
+      "options": [
+        { "label": "Re-explain calmly and check they understood", "scores": { "communication": 3, "timeManagement": 1 } },
+        { "label": "Write it down step-by-step so there's no ambiguity", "scores": { "communication": 2, "criticalThinking": 2 } },
+        { "label": "Ask them what part was confusing before re-explaining", "scores": { "communication": 3, "criticalThinking": 1 } },
+        { "label": "Take over that part yourself to save time", "scores": { "leadership": 1, "timeManagement": 2 } }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "text": "You have three deadlines in the same week. How do you usually handle it?",
+      "options": [
+        { "label": "Make a list and tackle the most urgent first", "scores": { "timeManagement": 3, "criticalThinking": 1 } },
+        { "label": "Work on all three a little each day", "scores": { "timeManagement": 2 } },
+        { "label": "Focus fully on one at a time, finish, then move on", "scores": { "timeManagement": 2, "leadership": 1 } },
+        { "label": "Start with whichever feels easiest to build momentum", "scores": { "timeManagement": 1, "communication": 1 } }
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "audio",
+      "audioSrc": "assets/audio/scenario-question.mp3",
+      "text": "Listen to the scenario, then choose how you'd respond to the client.",
+      "options": [
+        { "label": "Be upfront about the delay and give a new timeline", "scores": { "communication": 3, "leadership": 1 } },
+        { "label": "Reassure them first, explain the details after", "scores": { "communication": 2 } },
+        { "label": "Loop your teammate in immediately so they hear it too", "scores": { "communication": 2, "leadership": 1 } },
+        { "label": "Ask your team lead to handle the client conversation", "scores": { "timeManagement": 1 } }
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "text": "You're given a task with unclear instructions. What do you do first?",
+      "options": [
+        { "label": "Ask clarifying questions before starting", "scores": { "communication": 2, "criticalThinking": 2 } },
+        { "label": "Make reasonable assumptions and start, adjusting later", "scores": { "criticalThinking": 2, "leadership": 1 } },
+        { "label": "Research similar past examples for guidance", "scores": { "criticalThinking": 3 } },
+        { "label": "Break the task into smaller parts to understand it", "scores": { "criticalThinking": 3, "timeManagement": 1 } }
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "hotspot",
+      "image": "assets/images/hotspot-office.svg",
+      "text": "Click the spot in the room where you'd naturally position yourself during a group project.",
+      "zones": [
+        {
+          "id": "zone-quiet-desk",
+          "label": "Quiet Corner Desk",
+          "xMinPct": 6.25, "xMaxPct": 31.25, "yMinPct": 10, "yMaxPct": 38,
+          "scores": { "criticalThinking": 2, "timeManagement": 2 }
+        },
+        {
+          "id": "zone-group-table",
+          "label": "Group Table",
+          "xMinPct": 37.5, "xMaxPct": 65, "yMinPct": 30, "yMaxPct": 66,
+          "scores": { "communication": 3, "leadership": 1 }
+        },
+        {
+          "id": "zone-presentation",
+          "label": "Front of the Room",
+          "xMinPct": 71.25, "xMaxPct": 93.75, "yMinPct": 12, "yMaxPct": 52,
+          "scores": { "leadership": 3, "communication": 1 }
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "text": "A group project is falling behind. What's your instinct?",
+      "options": [
+        { "label": "Step up and reorganize the plan for everyone", "scores": { "leadership": 3 } },
+        { "label": "Check in with each person individually first", "scores": { "leadership": 2, "communication": 2 } },
+        { "label": "Suggest a quick group meeting to realign", "scores": { "leadership": 2, "communication": 1 } },
+        { "label": "Focus on finishing your own part well, as an example", "scores": { "timeManagement": 2, "leadership": 1 } }
+      ]
+    },
+    {
+      "id": "q7",
+      "type": "mcq",
+      "text": "It's 9pm and you haven't started an assignment due tomorrow. What now?",
+      "options": [
+        { "label": "Start immediately and push through", "scores": { "timeManagement": 2 } },
+        { "label": "Quickly plan what's essential vs. skippable, then start", "scores": { "timeManagement": 3, "criticalThinking": 1 } },
+        { "label": "Get a full night's sleep and wake up early instead", "scores": { "timeManagement": 1, "criticalThinking": 1 } },
+        { "label": "Message classmates to see how far along they are", "scores": { "communication": 2 } }
+      ]
+    },
+    {
+      "id": "q8",
+      "type": "mcq",
+      "text": "You solve a problem, but later realize a flaw in your solution. What do you do?",
+      "options": [
+        { "label": "Fix it immediately, even if it means starting over", "scores": { "criticalThinking": 2, "timeManagement": 1 } },
+        { "label": "Patch the flaw without redoing the whole thing", "scores": { "timeManagement": 2 } },
+        { "label": "Analyze why you missed it, then fix it", "scores": { "criticalThinking": 3 } },
+        { "label": "Ask someone else to review before changing anything", "scores": { "communication": 2, "criticalThinking": 1 } }
+      ]
+    }
+  ]
+}
