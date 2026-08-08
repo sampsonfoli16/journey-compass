@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Contact & Feedback Page Styles
+   ========================================================================== */
+
+.contact-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ============ Author section ============ */
+.author-card {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 15px 40px -25px rgba(11, 18, 32, 0.2);
+}
+
+.author-avatar {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-red));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.author-details h1 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-xs);
+}
+
+.author-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.author-role {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-sm);
+}
+
+.author-blurb {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  max-width: 60ch;
+  margin-bottom: var(--space-md);
+}
+
+.author-links {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.link-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-border);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.link-chip:hover {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+}
+
+/* ============ Feedback form ============ */
+.feedback-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 15px 40px -25px rgba(11, 18, 32, 0.2);
+}
+
+.feedback-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+#contact-submit-btn {
+  width: 100%;
+  margin-top: var(--space-xs);
+}
+
+/* ============ Success state, swapped in for the form ============ */
+.feedback-success {
+  text-align: center;
+  padding: var(--space-md) 0;
+}
+
+.feedback-success h3 {
+  color: var(--color-blue);
+  margin-bottom: var(--space-xs);
+}
+
+.feedback-success p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  max-width: 50ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 600px) {
+  .author-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .author-links {
+    justify-content: center;
+  }
+
+  .feedback-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
