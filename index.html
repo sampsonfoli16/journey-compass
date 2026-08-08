@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journey Compass | Find Your Soft Skills Path</title>
+  <meta name="description" content="Journey Compass helps BSE students reflect on their strengths and build their Learning Journey Plan.">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+  <!-- ============ DARK HERO SECTION (header + intro live inside this) ============ -->
+  <div class="hero-dark">
+
+    <header class="site-header">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+          <polygon points="20,6 24,20 20,18 16,20" fill="#CE1126"/>
+          <polygon points="20,34 24,20 20,22 16,20" fill="#4C7FE0"/>
+        </svg>
+        <span>Journey Compass</span>
+      </div>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="contact.html#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="#student-form" class="btn btn-primary nav-cta">Start the Quiz</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <span class="eyebrow">For BSE students</span>
+        <h1>Find your <em>direction</em> before the semester finds you.</h1>
+        <p class="hero-subtitle">
+          A short, honest reflection tool. Answer a few questions about how
+          you communicate, think, manage time and lead, and walk away
+          with a clearer sense of where your strengths already point.
+        </p>
+
+        <ul class="skill-pills" aria-label="Skills this quiz measures">
+          <li>Communication</li>
+          <li>Critical Thinking</li>
+          <li>Time Management</li>
+          <li>Leadership</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a href="#student-form" class="btn btn-primary">Start the quiz &rarr;</a>
+          <a href="#how-it-works" class="btn btn-outline-light">How it works</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="compass-panel">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="65" fill="none" stroke="#4C7FE0" stroke-width="1" opacity="0.5"/>
+            <g class="compass-needle">
+              <polygon points="100,25 112,100 100,92 88,100" fill="#CE1126"/>
+              <polygon points="100,175 112,100 100,108 88,100" fill="#4C7FE0"/>
+            </g>
+            <circle cx="100" cy="100" r="5" fill="#F5F6F8"/>
+          </svg>
+          <span class="compass-caption">Your strengths, mapped</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ LIGHT SECTION: how it works + form ============ -->
+  <main style="padding-top: 0;">
+
+    <section class="how-it-works-section" id="how-it-works">
+      <span class="section-eyebrow">The process</span>
+      <h2>How Journey Compass works</h2>
+      <p class="section-intro">Four steps, about five minutes start to finish.</p>
+
+      <ol class="steps-grid">
+        <li class="step-card">
+          <span class="step-number">1</span>
+          <h3>Tell us who you are</h3>
+          <p>Fill in your name, student ID, email and phone number. Every field is checked as you type, so you will know right away if something needs fixing.</p>
+        </li>
+        <li class="step-card">
+          <span class="step-number">2</span>
+          <h3>Answer 8 questions</h3>
+          <p>A mix of multiple-choice, one audio scenario and one image hotspot question, all within a 240-second timer.</p>
+        </li>
+        <li class="step-card">
+          <span class="step-number">3</span>
+          <h3>We tally your answers</h3>
+          <p>Each answer earns points across four categories: communication, critical thinking, time management and leadership.</p>
+        </li>
+        <li class="step-card">
+          <span class="step-number">4</span>
+          <h3>Get your Learning Journey Plan</h3>
+          <p>See your full score breakdown, your top strength, and a concrete next step for building on it.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="form-section-wrap">
+      <div class="form-section" id="student-form-card">
+        <h2>Let's start with a few details</h2>
+        <p class="form-intro">
+          Takes about 5 minutes, 8 quick questions, no wrong answers. We
+          just need this to personalise your results, so fields are checked
+          as you type, and you'll know right away if something needs fixing.
+        </p>
+
+        <form id="student-form" novalidate>
+
+          <div class="field-group" id="group-fullname">
+            <label for="fullname">Full name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="e.g. Sampson Foli" autocomplete="name">
+            <small class="error-message" id="error-fullname"></small>
+          </div>
+
+          <div class="field-group" id="group-studentid">
+            <label for="studentid">Student ID</label>
+            <input type="text" id="studentid" name="studentid" placeholder="2028-BSE-045">
+            <small class="field-hint">Format: 2028-BSE-XXX (three digits)</small>
+            <small class="error-message" id="error-studentid"></small>
+          </div>
+
+          <div class="field-group" id="group-email">
+            <label for="email">Student email</label>
+            <input type="text" id="email" name="email" placeholder="s.foli@alustudent.com" autocomplete="email">
+            <small class="field-hint">Use your ALU student email</small>
+            <small class="error-message" id="error-email"></small>
+          </div>
+
+          <div class="field-group" id="group-phone">
+            <label for="phone">Phone number</label>
+            <input type="text" id="phone" name="phone" placeholder="+230 5712 3456" autocomplete="tel" inputmode="numeric">
+            <small class="field-hint">The +230 is filled in for you, just type the 8 digits</small>
+            <small class="error-message" id="error-phone"></small>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="start-btn">Start the quiz &rarr;</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand footer-brand-mark">
+          <svg class="brand-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+            <polygon points="20,6 24,20 20,18 16,20" fill="#CE1126"/>
+            <polygon points="20,34 24,20 20,22 16,20" fill="#4C7FE0"/>
+          </svg>
+          <span>Journey Compass</span>
+        </div>
+        <p class="footer-blurb">
+          A short, honest reflection tool built for ALU BSE students. Answer
+          a few questions about how you communicate, think, manage time
+          and lead, and walk away with a clearer sense of where your
+          strengths already point.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#student-form">Take The Quiz</a>
+        <a href="contact.html#about">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <a href="mailto:s.foli@alustudent.com">s.foli@alustudent.com</a>
+        <a href="tel:+23058441629">+230 5844 1629</a>
+        <a href="https://github.com/sampsonfoli16/journey-compass" target="_blank" rel="noopener">GitHub Repository</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 Journey Compass. Built by Sampson Foli.</p>
+    </div>
+  </footer>
+
+  <script src="js/validation.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>

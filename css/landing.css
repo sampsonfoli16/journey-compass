@@ -1,0 +1,294 @@
+/* ==========================================================================
+   Landing Page Styles — dark hero + light form section
+   ========================================================================== */
+
+/* ============ Dark hero wrapper (contains header + hero content) ============ */
+.hero-dark {
+  background: linear-gradient(180deg, var(--color-dark-bg) 0%, var(--color-dark-bg-alt) 100%);
+  color: var(--color-text-on-dark);
+}
+
+.nav-cta {
+  padding: 0.55rem 1.3rem;
+  font-size: 0.85rem;
+}
+
+/* ============ Hero content ============ */
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-xl);
+  align-items: center;
+  padding: var(--space-xl) var(--space-lg) 5rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--color-text-on-dark-muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: var(--space-md);
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--color-dark-border);
+  border-radius: var(--radius-pill);
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--space-md);
+}
+
+/* The one accent word — italic serif, in the ALU blue, breaking up the
+   sans-serif headline the way a hand-picked pull-quote would */
+.hero h1 em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-blue-light);
+}
+
+.hero-subtitle {
+  color: var(--color-text-on-dark-muted);
+  font-size: 1.08rem;
+  max-width: 46ch;
+  margin-bottom: var(--space-lg);
+}
+
+/* Pill row naming the four things the quiz actually measures — real
+   content instead of a decorative bullet list */
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: var(--space-lg);
+}
+
+.skill-pills li {
+  list-style: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-dark-border);
+  background-color: rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-on-dark);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* ============ Hero visual: compass panel ============
+   Fixed pixel dimensions + overflow:hidden is what actually prevents the
+   overflow bug — the SVG can never render larger than this box, no
+   matter what viewBox math is happening inside it. */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compass-panel {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 50% 40%, rgba(76, 127, 224, 0.15), transparent 70%),
+              var(--color-dark-bg-alt);
+  border: 1px solid var(--color-dark-border);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compass-panel svg {
+  width: 78%;
+  height: 78%;
+}
+
+.compass-needle {
+  transform-origin: 100px 100px;
+  animation: needle-drift 6s ease-in-out infinite;
+}
+
+@keyframes needle-drift {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.compass-caption {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-text-on-dark-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ============ How It Works section ============ */
+.section-eyebrow {
+  display: inline-block;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: var(--space-sm);
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.how-it-works-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem var(--space-lg) 2rem;
+  text-align: center;
+}
+
+.how-it-works-section h2 {
+  font-size: 2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xl);
+}
+
+.steps-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  text-align: left;
+}
+
+.step-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md);
+  box-shadow: 0 15px 40px -25px rgba(11, 18, 32, 0.15);
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.step-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: var(--space-xs);
+}
+
+.step-card p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ============ Form section (light, below the hero) ============ */
+.form-section-wrap {
+  padding: 5rem var(--space-lg);
+}
+
+.form-section {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px -20px rgba(11, 18, 32, 0.15);
+  padding: var(--space-xl);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-section h2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.form-intro {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-lg);
+}
+
+#start-btn {
+  width: 100%;
+  margin-top: var(--space-xs);
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 900px) {
+  .steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: var(--space-lg);
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .skill-pills,
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    order: -1;
+  }
+
+  .compass-panel {
+    max-width: 240px;
+  }
+
+  .site-header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .main-nav {
+    gap: var(--space-sm);
+  }
+
+  .form-section {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-it-works-section {
+    padding: var(--space-xl) var(--space-md) var(--space-md);
+  }
+}

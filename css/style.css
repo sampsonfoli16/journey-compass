@@ -1,0 +1,377 @@
+/* ==========================================================================
+   Journey Compass — Global Stylesheet
+   Author: Sampson Foli
+   Purpose: Design tokens (colours, type, spacing) and layout rules shared
+   across all four pages. Page-specific styles live in their own files
+   (landing.css, quiz.css, results.css, contact.css) and load after this
+   one so they can override where needed.
+   ========================================================================== */
+
+/* --- Google Fonts ---
+   Space Grotesk  = headings on light pages (geometric, confident)
+   Playfair Display (italic) = the one accent word in the hero headline
+   Inter          = body text everywhere */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ALU brand colours */
+  --color-red: #CE1126;
+  --color-red-dark: #A30D1E;
+  --color-blue: #003DA5;
+  --color-blue-dark: #002C78;
+  --color-blue-light: #4C7FE0;
+  --color-white: #FFFFFF;
+
+  /* Light-page neutrals */
+  --color-bg: #F7F7F5;
+  --color-text: #111827;
+  --color-text-muted: #5B6472;
+  --color-border: #E1E1DC;
+
+  /* Dark-hero neutrals (used only on the landing hero section) */
+  --color-dark-bg: #0B1220;
+  --color-dark-bg-alt: #131B2E;
+  --color-dark-border: rgba(255, 255, 255, 0.12);
+  --color-text-on-dark: #F5F6F8;
+  --color-text-on-dark-muted: #9AA3B2;
+
+  /* Feedback colours for form validation */
+  --color-valid: #1E7A3D;
+  --color-invalid: var(--color-red);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-accent: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  --radius: 10px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --max-width: 1140px;
+  --transition-fast: 150ms ease;
+  --transition-mid: 300ms ease;
+}
+
+/* --- Reset --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* min-width: 0 is the fix for the overflow bug you saw: without it,
+     grid/flex children refuse to shrink below their content's natural
+     size, so a large SVG can force its column wider than intended and
+     spill out of the layout. This one rule prevents that everywhere. */
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden; /* safety net: nothing can create a horizontal scrollbar */
+  padding-top: 68px; /* reserves space for the fixed header, same on every page */
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--color-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+/* --- Accessibility: visible keyboard focus --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-blue-light);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Standard header (used on Quiz / Results / Contact — light background) --- */
+/* --- Site header ---
+   Used identically on all four pages: same dark style, same position,
+   same links, same width. Fixed (not sticky) so it's pinned to the
+   viewport itself rather than depending on any particular page's
+   scroll container — this is what guarantees it looks and behaves
+   exactly the same no matter which page you're on. */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 68px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-lg);
+  border-bottom: 1px solid var(--color-dark-border);
+  background-color: var(--color-dark-bg);
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-text-on-dark);
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.main-nav a {
+  color: var(--color-text-on-dark-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.main-nav a:hover {
+  color: var(--color-text-on-dark);
+}
+
+.main-nav a.active {
+  color: var(--color-white);
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+.site-footer {
+  background-color: var(--color-blue-dark);
+  color: var(--color-text-on-dark-muted);
+  padding: var(--space-xl) var(--space-lg) var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.footer-top {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-lg);
+}
+
+.footer-brand-mark {
+  color: var(--color-text-on-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-blurb {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  max-width: 42ch;
+}
+
+.footer-col h3 {
+  color: var(--color-text-on-dark);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-col a {
+  display: block;
+  color: var(--color-text-on-dark-muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.65rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--color-white);
+}
+
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-top: 1px solid var(--color-dark-border);
+  padding-top: var(--space-md);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    text-align: left;
+  }
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.9rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-red-dark);
+  box-shadow: 0 8px 20px rgba(206, 17, 38, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-blue);
+  border: 2px solid var(--color-blue);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* Outline button for use ON the dark hero (white outline instead of blue) */
+.btn-outline-light {
+  background-color: transparent;
+  color: var(--color-text-on-dark);
+  border: 1.5px solid var(--color-dark-border);
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- Shared form field styles (Landing + Contact pages) --- */
+.field-group {
+  margin-bottom: var(--space-md);
+}
+
+.field-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.field-group input,
+.field-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  transition: border-color var(--transition-fast);
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+  border-color: var(--color-blue);
+}
+
+.field-group.is-valid input,
+.field-group.is-valid textarea {
+  border-color: var(--color-valid);
+}
+
+.field-group.is-invalid input,
+.field-group.is-invalid textarea {
+  border-color: var(--color-invalid);
+}
+
+.error-message {
+  display: block;
+  min-height: 1.1rem;
+  color: var(--color-invalid);
+  font-size: 0.82rem;
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+.field-hint {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+}
