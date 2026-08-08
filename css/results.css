@@ -1,0 +1,237 @@
+/* ==========================================================================
+   Results Page Styles
+   ========================================================================== */
+
+.results-main {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+/* ============ Empty state (no sessionStorage results found) ============ */
+.results-empty {
+  text-align: center;
+  max-width: 480px;
+  margin: var(--space-xl) auto;
+}
+
+.results-empty h1 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-sm);
+}
+
+.results-empty p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* ============ Hero: greeting + compass ============ */
+.results-hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: var(--space-lg);
+  align-items: center;
+  margin-bottom: var(--space-xl);
+}
+
+.results-hero .eyebrow {
+  display: inline-block;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: var(--space-sm);
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+#results-greeting {
+  font-size: 2.2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.results-sub {
+  color: var(--color-text-muted);
+  max-width: 46ch;
+  margin-bottom: var(--space-xs);
+}
+
+.results-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.results-compass {
+  text-align: center;
+}
+
+.results-compass svg {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+#results-needle {
+  transition: transform 700ms ease;
+}
+
+.results-compass-caption {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+/* ============ Canvas chart ============ */
+.chart-section {
+  margin-bottom: var(--space-xl);
+}
+
+.chart-wrap {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+  box-shadow: 0 15px 40px -25px rgba(11, 18, 32, 0.15);
+}
+
+#score-chart {
+  width: 100%;
+  height: 280px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  #score-chart {
+    height: 240px;
+  }
+}
+
+/* ============ Score breakdown ============ */
+.score-breakdown {
+  margin-bottom: var(--space-xl);
+}
+
+.score-breakdown h2,
+.journey-plan h2 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-md);
+}
+
+.score-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.score-row-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.score-row-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.score-row-label .top-badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-red);
+  background-color: #FDECEC;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-pill);
+}
+
+.score-row-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.score-track {
+  width: 100%;
+  height: 12px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  width: 0%; /* animated up to the real value by results.js */
+  background: linear-gradient(90deg, var(--color-blue), var(--color-red));
+  border-radius: var(--radius-pill);
+  transition: width 900ms ease;
+}
+
+/* ============ Learning Journey Plan card ============ */
+.journey-plan {
+  margin-bottom: var(--space-xl);
+}
+
+.plan-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 15px 40px -25px rgba(11, 18, 32, 0.2);
+}
+
+.plan-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-blue);
+  background-color: #EEF3FC;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-sm);
+}
+
+.plan-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+
+.plan-card p {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.plan-next {
+  color: var(--color-text) !important;
+  font-weight: 500;
+}
+
+/* ============ Actions ============ */
+.results-actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 640px) {
+  .results-hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  #results-greeting {
+    font-size: 1.7rem;
+  }
+}
