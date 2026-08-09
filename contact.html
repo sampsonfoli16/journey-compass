@@ -20,7 +20,11 @@
       </svg>
       <span>Journey Compass</span>
     </div>
-    <nav class="main-nav" aria-label="Primary">
+    <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="menu-icon" aria-hidden="true"></span>
+    </button>
+    <nav id="primary-nav" class="main-nav" aria-label="Primary" aria-hidden="false">
       <a href="index.html">Home</a>
       <a href="contact.html#about">About</a>
       <a href="contact.html" class="active">Contact</a>
@@ -149,5 +153,6 @@
 
   <script src="js/validation.js"></script>
   <script src="js/contact.js"></script>
+  <script src="js/menu.js"></script>
 </body>
 </html>

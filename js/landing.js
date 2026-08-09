@@ -10,6 +10,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("student-form");
 
+  if (!form) return;
+
   // Fields on this page, paired with the rule that applies to each one
   const fields = [
     ["fullname", "fullname"],
