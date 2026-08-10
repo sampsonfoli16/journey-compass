@@ -41,10 +41,11 @@ journey-compass/
 ├── js/
 │   ├── validation.js        # Shared regex-based validation engine (used by landing + contact forms)
 │   ├── landing.js          # Landing form submit handler, saves student info to sessionStorage
-│   ├── quiz.js            # Renders questions, handles answer selection, drives the quiz flow
+│   ├── quiz.js             # Renders questions, handles answer selection, drives the quiz flow
 │   ├── scoring.js          # Point tallying, speed/streak multiplier, percentage normalisation
 │   ├── timer.js            # Generic reusable countdown timer
 │   ├── media.js            # Audio controls + image-hotspot click detection
+│   ├── menu.js             # Mobile nav toggle + accessible hamburger behavior
 │   ├── results.js          # Reads sessionStorage results, renders the Results page
 │   └── contact.js          # Feedback form submit handler + success state
 ├── data/
