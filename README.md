@@ -46,6 +46,7 @@ journey-compass/
 │   ├── timer.js            # Generic reusable countdown timer
 │   ├── media.js            # Audio controls + image-hotspot click detection
 │   ├── menu.js             # Mobile nav toggle + accessible hamburger behavior
+│   ├── canvas-chart.js     # High-DPI canvas chart rendering used on Results page
 │   ├── results.js          # Reads sessionStorage results, renders the Results page
 │   └── contact.js          # Feedback form submit handler + success state
 ├── data/
