@@ -129,13 +129,10 @@ textarea:focus-visible {
   }
 }
 
-/* --- Standard header (used on Quiz / Results / Contact — light background) --- */
-/* --- Site header ---
-   Used identically on all four pages: same dark style, same position,
-   same links, same width. Fixed (not sticky) so it's pinned to the
-   viewport itself rather than depending on any particular page's
-   scroll container — this is what guarantees it looks and behaves
-   exactly the same no matter which page you're on. */
+/* --- Site header (shared on all pages) ---
+  The header is used identically across all pages, including the
+  dark-hero Landing page. It's fixed to the viewport so it renders
+  consistently site-wide. */
 .site-header {
   position: fixed;
   top: 0;
@@ -151,6 +148,14 @@ textarea:focus-visible {
   border-bottom: 1px solid var(--color-dark-border);
   background-color: var(--color-dark-bg);
   box-sizing: border-box;
+}
+
+/* Keep header padding consistent across shared breakpoints
+   (Landing previously adjusted this at 900px; consolidated here). */
+@media (max-width: 900px) {
+  .site-header {
+    padding: var(--space-sm) var(--space-md);
+  }
 }
 
 .brand {

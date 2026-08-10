@@ -272,9 +272,7 @@
     max-width: 240px;
   }
 
-  .site-header {
-    padding: var(--space-sm) var(--space-md);
-  }
+  /* header padding moved to css/style.css for shared header rules */
 
   .main-nav {
     gap: var(--space-sm);
