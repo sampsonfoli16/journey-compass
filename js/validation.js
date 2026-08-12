@@ -32,7 +32,7 @@ const VALIDATION_RULES = {
   // Student ID: locked to the cohort format we agreed on — 2028-BSE-045
   studentid: {
     pattern: /^2028-BSE-\d{3}$/,
-    message: "Student ID must look like 2028-BSE-045."
+    message: "Student ID must look like 2028-BSE-000."
   },
 
   // Student email: accepts the ALU shorthand format (s.foli@alustudent.com)
