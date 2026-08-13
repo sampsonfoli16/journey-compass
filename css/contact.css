@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Contact & Feedback Page Styles
-   ========================================================================== */
+/* Contact & Feedback Page Styles */
 
 .contact-main {
   max-width: 760px;
@@ -11,7 +9,7 @@
   gap: var(--space-xl);
 }
 
-/* ============ Author section ============ */
+/* Author section  */
 .author-card {
   display: flex;
   gap: var(--space-lg);
@@ -85,7 +83,7 @@
   color: var(--color-blue);
 }
 
-/* ============ Feedback form ============ */
+/* Feedback form */
 .feedback-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
@@ -104,7 +102,7 @@
   margin-top: var(--space-xs);
 }
 
-/* ============ Success state, swapped in for the form ============ */
+/*  Success state, swapped in for the form  */
 .feedback-success {
   text-align: center;
   padding: var(--space-md) 0;
@@ -123,7 +121,7 @@
   margin-right: auto;
 }
 
-/* ============ Responsive ============ */
+/* Responsive  */
 @media (max-width: 600px) {
   .author-card {
     flex-direction: column;
