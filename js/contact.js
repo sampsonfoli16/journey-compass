@@ -1,12 +1,4 @@
-/* ==========================================================================
-   contact.js
-   Handles the feedback form on the Contact page:
-   - attaches live validation (reusing the same rules/engine as the
-     Landing page form, from validation.js)
-   - blocks submission until everything passes
-   - on success, swaps the form out for a confirmation panel instead of
-     navigating anywhere (there's no backend to actually send this to)
-   ========================================================================== */
+/*  contact.js*/
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
