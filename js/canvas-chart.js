@@ -1,11 +1,4 @@
-/* ==========================================================================
-   canvas-chart.js
-   Draws the required Results-page graphic using the raw HTML5 Canvas 2D
-   API — no chart library involved. It's a simple animated bar chart:
-   one bar per soft-skill category, growing from 0 up to its real
-   percentage over about a second, colour-coded, with the value and
-   label drawn directly onto the canvas.
-   ========================================================================== */
+/* canvas-chart.js*/
 
 /**
  * Renders an animated bar chart into the given <canvas> element.
