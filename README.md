@@ -71,17 +71,25 @@ As the student answers each question, `scoring.js` adds those points into a runn
 No build step, no dependencies, it's plain HTML/CSS/JS.
 
 1. Clone the repo:
+
+   <!-- markdownlint-disable MD034 -->
    ```bash
    git clone https://github.com/sampsonfoli16/journey-compass.git
    ```
+   <!-- markdownlint-enable MD034 -->
+
 2. Open `index.html` directly in a browser, or serve the folder locally (recommended, since `fetch()` for `data/questions.json` can be blocked by some browsers on the `file://` protocol):
+
    ```bash
    npx serve .
    ```
+
    or, with Python:
+
    ```bash
    python3 -m http.server 8000
    ```
+
 3. Visit the local address it gives you, and start from the landing page.
 
 ## Contact
