@@ -1,4 +1,7 @@
-/*  contact.js*/
+/*
+  contact.js
+  Handles the feedback form, including live validation and a friendly success state.
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
@@ -24,15 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Everything passed. Swap the form out for a confirmation message
+    // Everything validated, so we swap the form for a thank-you message.
     form.hidden = true;
     successPanel.hidden = false;
   });
 
-  // Lets someone submit a second message without reloading the page
+  // This lets someone send another message without a full page reload.
   resetBtn.addEventListener("click", () => {
     form.reset();
-    // Clear validation state left over from the previous submission
+    // Clear any old validation styling before the form is shown again.
     document.querySelectorAll(".field-group").forEach((group) => {
       group.classList.remove("is-valid", "is-invalid");
     });

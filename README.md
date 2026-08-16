@@ -7,7 +7,7 @@ Built by **Sampson Foli** for the Frontend Web Development module.
 ## Live pages
 
 | Page | File | What it does |
-|---|---|---|
+| --- | --- | --- |
 | Landing | `index.html` | Hero intro + a validated student-details form (name, student ID, email, phone) |
 | Quiz | `quiz.html` | An 8-question, 240-second timed quiz with MCQ, audio, and image-hotspot questions |
 | Results | `results.html` | Score breakdown by category, top-strength compass, and a Learning Journey Plan |
@@ -26,34 +26,34 @@ Built by **Sampson Foli** for the Frontend Web Development module.
 
 ## Project structure
 
-```
+```text
 journey-compass/
 ├── index.html            # Landing page + student details form
-├── quiz.html              # Quiz shell (questions render dynamically from JSON)
-├── results.html            # Results + Learning Journey Plan
-├── contact.html            # Author info + feedback form
+├── quiz.html             # Quiz shell (questions render dynamically from JSON)
+├── results.html          # Results + Learning Journey Plan
+├── contact.html          # Author info + feedback form
 ├── css/
-│   ├── style.css          # Shared design tokens, header/footer, buttons, form fields
-│   ├── landing.css         # Landing page hero + form section
-│   ├── quiz.css            # Timer, progress bar, question card, hotspot/audio styling
-│   ├── results.css         # Score bars, compass, plan card
-│   └── contact.css         # Author card + feedback form layout
+│   ├── style.css         # Shared design tokens, header/footer, buttons, form fields
+│   ├── landing.css       # Landing page hero + form section
+│   ├── quiz.css          # Timer, progress bar, question card, hotspot/audio styling
+│   ├── results.css       # Score bars, compass, plan card
+│   └── contact.css       # Author card + feedback form layout
 ├── js/
-│   ├── validation.js        # Shared regex-based validation engine (used by landing + contact forms)
-│   ├── landing.js          # Landing form submit handler, saves student info to sessionStorage
-│   ├── quiz.js             # Renders questions, handles answer selection, drives the quiz flow
-│   ├── scoring.js          # Point tallying, speed/streak multiplier, percentage normalisation
-│   ├── timer.js            # Generic reusable countdown timer
-│   ├── media.js            # Audio controls + image-hotspot click detection
-│   ├── menu.js             # Mobile nav toggle + accessible hamburger behavior
-│   ├── canvas-chart.js     # High-DPI canvas chart rendering used on Results page
-│   ├── results.js          # Reads sessionStorage results, renders the Results page
-│   └── contact.js          # Feedback form submit handler + success state
+│   ├── validation.js     # Shared regex-based validation engine (used by landing + contact forms)
+│   ├── landing.js        # Landing form submit handler, saves student info to sessionStorage
+│   ├── quiz.js           # Renders questions, handles answer selection, drives the quiz flow
+│   ├── scoring.js        # Point tallying, speed/streak multiplier, percentage normalisation
+│   ├── timer.js          # Generic reusable countdown timer
+│   ├── media.js          # Audio controls + image-hotspot click detection
+│   ├── menu.js           # Mobile nav toggle + accessible hamburger behavior
+│   ├── canvas-chart.js   # High-DPI canvas chart rendering used on Results page
+│   ├── results.js        # Reads sessionStorage results, renders the Results page
+│   └── contact.js        # Feedback form submit handler + success state
 ├── data/
-│   └── questions.json      # All 8 questions, their options/zones, and score weightings
+│   └── questions.json    # All 8 questions, their options/zones, and score weightings
 └── assets/
-    ├── images/            # Hotspot illustration(s)
-    └── audio/             # Recorded scenario audio clip
+    ├── images/           # Hotspot illustration(s)
+    └── audio/            # Recorded scenario audio clip
 ```
 
 ## How the scoring works
@@ -64,28 +64,28 @@ Each answer option in `data/questions.json` carries a `scores` object, e.g.:
 { "label": "Step up and reorganize the plan for everyone", "scores": { "leadership": 3 } }
 ```
 
-As the student answers each question, `scoring.js` adds those points into a running total per category, applying a small multiplier for quick, confident answers. At the end, `normalizeScores()` converts the four raw totals into percentages **as a share of the combined total**, meaning the four percentages always add up to 100%. A student can score highest in multiple areas relative to each other, but the four numbers together will always sum to 100 (e.g. Communication 40% / Critical Thinking 25% / Time Management 20% / Leadership 15%).
+As the student answers each question, `scoring.js` adds those points into a running total per category, applying a small multiplier for quick, confident answers. At the end, `normalizeScores()` converts the four raw totals into percentages as a share of the combined total, meaning the four percentages always add up to 100%. A student can score highest in multiple areas relative to each other, but the four numbers together will always sum to 100 (for example, Communication 40% / Critical Thinking 25% / Time Management 20% / Leadership 15%).
 
 ## Running it locally
 
 No build step, no dependencies, it's plain HTML/CSS/JS.
 
 1. Clone the repo:
-   ```
+   ```bash
    git clone https://github.com/sampsonfoli16/journey-compass.git
    ```
-2. Open `index.html` directly in a browser, **or** serve the folder locally (recommended, since `fetch()` for `data/questions.json` can be blocked by some browsers on the `file://` protocol):
-   ```
+2. Open `index.html` directly in a browser, or serve the folder locally (recommended, since `fetch()` for `data/questions.json` can be blocked by some browsers on the `file://` protocol):
+   ```bash
    npx serve .
    ```
    or, with Python:
-   ```
+   ```bash
    python3 -m http.server 8000
    ```
 3. Visit the local address it gives you, and start from the landing page.
 
 ## Contact
 
-- GitHub: [github.com/sampsonfoli16](https://github.com/sampsonfoli16)
+- GitHub: <https://github.com/sampsonfoli16>
 - Email: s.foli@alustudent.com
 - Phone: +230 5844 1629

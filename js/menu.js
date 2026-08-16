@@ -1,4 +1,4 @@
-// Simple mobile menu toggle used on all pages
+// A small mobile menu toggle that keeps the header usable on phones and tablets.
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.getElementById('primary-nav');
@@ -8,23 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     nav.setAttribute('aria-hidden', open ? 'false' : 'true');
     document.querySelector('.site-header').classList.toggle('nav-open', open);
-    // prevent body scroll when menu open on small screens
+    // Keep the page from scrolling behind the open menu on small screens.
     document.body.style.overflow = open ? 'hidden' : '';
   }
 
-  // initialize
+  // Start in the closed state so the header behaves consistently on first load.
   setOpen(false);
 
   toggle.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     setOpen(!expanded);
-    // move focus to the first link immediately after opening (fallback
-    // for browsers where transitionend doesn't fire for display:none)
+    // Move focus to the first navigation link as soon as the menu opens.
+    // This helps when a browser does not fire the usual transition callback.
     const firstLink = nav.querySelector('a');
     if (!expanded && firstLink) setTimeout(() => firstLink.focus(), 150);
   });
 
-  // close menu when clicking outside or on a nav link
+  // Close the menu when the user clicks away or selects a nav link.
   document.addEventListener('click', (e) => {
     if (!document.querySelector('.site-header.nav-open')) return;
     const header = document.querySelector('.site-header');
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target.tagName.toLowerCase() === 'a') setOpen(false);
   });
 
-  // close on escape
+  // Allow the user to close the menu with the Escape key.
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') setOpen(false);
   });

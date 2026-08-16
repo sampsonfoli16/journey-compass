@@ -1,14 +1,13 @@
 /*
    quiz.js
-   Orchestrates the whole quiz: loads questions.json, renders the current
-   question (in whichever of the three formats it is), records answers
-   into the scoring engine, drives the countdown timer, and hands off to
-   the Results page once everything is answered or time runs out.
+   Runs the quiz flow: loads the question bank, renders each question,
+   records answers, updates the timer, and sends the student to the
+   results page when the quiz is complete.
 */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ---- Elements we'll be updating throughout the quiz ----
+  // These are the page elements that change as the student moves through the quiz.
   const questionCard = document.getElementById("question-card");
   const progressFill = document.getElementById("progress-fill");
   const progressLabel = document.getElementById("progress-label");
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const timerValue = document.getElementById("timer-value");
   const timeoutOverlay = document.getElementById("timeout-overlay");
 
-  // ---- Quiz state, all kept in one place ----
+  // The quiz keeps its progress and score state in one place so the flow stays predictable.
   let questions = [];
   let currentIndex = 0;
   let scores = createEmptyScores();
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer = null;
   let quizLocked = false;
 
-  // ---- Load the question bank, then kick things off ----
+  // Fetch the question bank, then start the timer and render the first item.
   fetch("data/questions.json")
     .then(response => response.json())
     .then(data => {
@@ -38,13 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
       questionCard.innerHTML = `<p class="loading-text">Couldn't load the quiz questions. Please refresh the page.</p>`;
     });
 
-  // ---- Timer setup ----
+  // Set up the countdown and wire it to the warning state and timeout handler.
   function startTimer(durationSeconds) {
     timer = createCountdownTimer(
       durationSeconds,
       (remaining) => {
         timerValue.textContent = formatTime(remaining);
-        // Switch the timer into its "warning" visual state under 30s left
+        // Flip the timer into its warning styling when there are 30 seconds or less left.
         timerDisplay.classList.toggle("timer-warning", remaining <= 30 && remaining > 0);
       },
       handleTimeout
@@ -52,19 +51,18 @@ document.addEventListener("DOMContentLoaded", () => {
     timer.start();
   }
 
-  // ---- What happens when the countdown hits zero ----
+  // When time runs out, lock the quiz and let the student finish with the answers they have.
   function handleTimeout() {
     if (quizLocked) return; // already finished normally, nothing to do
     quizLocked = true;
     document.body.classList.add("quiz-locked");
     timeoutOverlay.hidden = false;
 
-    // Give the student a moment to read the message, then submit
-    // whatever scores were accumulated so far
+    // Give the student a moment to read the timeout message, then save the scores collected so far.
     setTimeout(finishQuiz, 1800);
   }
 
-  // ---- Renders whichever question we're currently on ----
+  // Render the question that matches the current index.
   function renderQuestion() {
     const question = questions[currentIndex];
     questionStartTime = Date.now();
@@ -79,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ---- Standard multiple-choice question ----
+  // Build a standard multiple-choice question card.
   function renderMcqQuestion(question) {
     questionCard.innerHTML = `
       <span class="question-type-label">Multiple choice</span>
@@ -100,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---- Audio-based question (interactive media type 1) ----
+  // Build the audio question version with custom play and replay controls.
   function renderAudioQuestion(question) {
     questionCard.innerHTML = `
       <span class="question-type-label">Audio scenario</span>
@@ -135,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---- Image hotspot question (interactive media type 2) ----
+  // Build the hotspot question where the student clicks a region of the image.
   function renderHotspotQuestion(question) {
     questionCard.innerHTML = `
       <span class="question-type-label">Image hotspot</span>
@@ -149,8 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const imageEl = document.getElementById("hotspot-image");
     const feedback = document.getElementById("hotspot-feedback");
 
-    // Click is only handled once per question — after a zone is picked,
-    // we disable further clicks so the answer can't accidentally change
+    // Only accept the first valid hotspot click so the answer cannot change by accident.
     let answered = false;
 
     imageEl.addEventListener("click", (event) => {
@@ -171,10 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ---- Shared logic for MCQ / Audio option selection ----
+  // Shared logic for selecting an option in MCQ or audio questions.
   function selectOption(chosenBtn, optionScores, list) {
-    // Lock the whole list once an answer is chosen, and visually mark
-    // the selected one, before moving on
+    // Lock the choices once a selection is made so the student cannot double-submit.
     list.querySelectorAll(".option-btn").forEach(btn => btn.disabled = true);
     chosenBtn.classList.add("selected");
 
@@ -182,12 +178,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(goToNextQuestion, 450);
   }
 
-  // ---- Records the chosen answer's points into the scoring engine ----
+  // Add the selected answer's points to the running scoreboard.
   function recordAnswer(answerScores) {
     const secondsTaken = (Date.now() - questionStartTime) / 1000;
     const multiplier = applyAnswerScore(scores, answerScores, secondsTaken, streakCount);
 
-    // Track the streak: a quick answer extends it, anything slower resets it
+    // Quick responses increase the streak; slower answers reset it.
     if (secondsTaken < 6) {
       streakCount += 1;
     } else {
@@ -195,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ---- Moves to the next question, or finishes the quiz ----
+  // Move to the next question or finish the quiz when the final item is answered.
   function goToNextQuestion() {
     currentIndex += 1;
     if (currentIndex >= questions.length) {
@@ -205,18 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ---- Updates the progress bar, label, and compass needle ----
+  // Update the progress bar, label, and compass needle to match the current step.
   function updateProgress() {
     const percent = (currentIndex / questions.length) * 100;
     progressFill.style.width = `${percent}%`;
     progressLabel.textContent = `Question ${currentIndex + 1} of ${questions.length}`;
 
-    // Needle sweeps from -70deg to +70deg across the whole quiz
+    // Sweep the needle from left to right across the full quiz so it feels like a real compass.
     const angle = -70 + (percent / 100) * 140;
     progressNeedle.style.transform = `rotate(${angle}deg)`;
   }
 
-  // ---- Wraps everything up and sends the student to the Results page ----
+  // Finalise the scores and send the student to the results screen.
   function finishQuiz() {
     if (timer) timer.stop();
     quizLocked = true;

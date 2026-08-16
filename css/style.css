@@ -83,6 +83,10 @@ body {
   padding-top: 68px; /* reserves space for the fixed header, same on every page */
 }
 
+.landing-main {
+  padding-top: 0;
+}
+
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 700;

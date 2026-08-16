@@ -1,17 +1,13 @@
 /*
    results.js
-   Reads the results quiz.js saved to sessionStorage (jc_results) and the
-   student details landing.js saved earlier (jc_student), then renders:
-   - a greeting
-   - a compass needle pointing at the student's top category
-   - a score bar per category
-   - a "Learning Journey Plan" card for their top category
+   Reads the saved quiz results and student details, then turns them into a
+   personalised summary page with the top strength, score breakdown, and
+   next-step guidance.
 */
 
-// Static copy for each category: what the compass needle points to, the
-// blurb describing the strength, and a concrete next-step suggestion.
-// This is the only content in this file that isn't derived from the
-// student's actual answers.
+// Each category has a small bit of copy for the heading, the summary blurb,
+// and a practical next step. This content is static and independent from the
+// student's answers.
 const CATEGORY_INFO = {
   communication: {
     label: "Communication",
@@ -73,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wireActions();
 });
 
-// ---- Greeting + meta line ----
+// Render the greeting and a small line of metadata about the student.
 function renderGreeting(results, student) {
   const greetingEl = document.getElementById("results-greeting");
   const metaEl = document.getElementById("results-meta");
@@ -88,7 +84,7 @@ function renderGreeting(results, student) {
   metaEl.textContent = `You answered ${results.questionsAnswered} of ${results.totalQuestions} questions.`;
 }
 
-// ---- Compass needle rotates to point at the top category ----
+// Point the compass needle toward the student's strongest category.
 function renderCompass(topCategory) {
   const needle = document.getElementById("results-needle");
   const caption = document.getElementById("results-compass-caption");
@@ -98,7 +94,7 @@ function renderCompass(topCategory) {
   caption.textContent = `Your top strength: ${info.label}`;
 }
 
-// ---- One animated bar per category, sorted highest first ----
+// Show an animated bar for each skill area, ordered by the final scores.
 function renderScoreList(results) {
   const list = document.getElementById("score-list");
   list.innerHTML = "";
@@ -129,8 +125,7 @@ function renderScoreList(results) {
     list.appendChild(li);
   });
 
-  // Animate the bars in on the next frame, so the width transition
-  // (defined in results.css) actually has something to animate from
+  // Animate the bars on the next frame so the width transition has a clean start point.
   requestAnimationFrame(() => {
     document.querySelectorAll(".score-fill").forEach((fill) => {
       fill.style.width = `${fill.dataset.target}%`;
@@ -138,7 +133,7 @@ function renderScoreList(results) {
   });
 }
 
-// ---- Learning Journey Plan card, built from the top category ----
+// Build the personalised Learning Journey Plan from the top category.
 function renderPlan(topCategory) {
   const info = CATEGORY_INFO[topCategory];
   document.getElementById("plan-title").textContent = info.label;
@@ -146,13 +141,12 @@ function renderPlan(topCategory) {
   document.getElementById("plan-next").textContent = info.next;
 }
 
-// ---- Retake / start-over buttons ----
+// Wire up the retake and restart actions.
 function wireActions() {
   const retakeBtn = document.getElementById("retake-btn");
   const restartLink = document.getElementById("restart-link");
 
-  // Retake: clear only the previous results, keep the student's details
-  // so they don't have to re-fill the form, and jump straight to the quiz
+  // Retake clears only the old results so the student can jump straight back in.
   retakeBtn.addEventListener("click", () => {
     sessionStorage.removeItem("jc_results");
     window.location.href = "quiz.html";

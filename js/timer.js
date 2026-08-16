@@ -1,12 +1,9 @@
 /*
    timer.js
-   A small, reusable countdown timer built on setInterval/clearInterval.
+   A small countdown timer built on setInterval and clearInterval.
 
-   It doesn't know anything about the quiz itself — you just tell it how
-   long to run and give it two callback functions: one that fires every
-   second (so the UI can update), and one that fires once when time runs
-   out. Keeping it generic like this means it could be reused for any
-   other timed feature later without rewriting it.
+   It stays generic so it can be reused anywhere a timed countdown is needed,
+   whether that is the quiz or some other feature later on.
 */
 
 function createCountdownTimer(durationSeconds, onTick, onExpire) {
@@ -28,8 +25,7 @@ function createCountdownTimer(durationSeconds, onTick, onExpire) {
   }
 
   function start() {
-    // Fire once immediately so the UI shows the starting time right away,
-    // instead of waiting a full second for the first update
+    // Trigger the first tick immediately so the UI starts from the correct value without waiting a full second.
     onTick(remaining);
     intervalId = setInterval(tick, 1000);
   }

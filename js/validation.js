@@ -1,60 +1,41 @@
 /*
    validation.js
-   Shared inline validation engine for Journey Compass.
+   Shared validation logic used by the landing and contact forms.
 
-   Used by BOTH the Landing page (student details form) and the Contact page
-   (feedback form), so the regex patterns and the "show error under the
-   field" behaviour only need to be written once and stay consistent
-   everywhere.
-
-   How it works, in plain terms:
-   1. Each field has a rule (a regex pattern + a human-readable error).
-   2. On every keystroke (input) and on blur (leaving the field), we check
-      the field's value against its rule.
-   3. If it fails, we add .is-invalid to the wrapping .field-group and
-      write the error message into the matching <small class="error-message">.
-   4. If it passes, we add .is-valid instead and clear the error text.
-
-   Nothing here uses alert() or the browser's built-in validation popups —
-   everything is rendered directly in the page as the brief requires.
+   This keeps the rules in one place so the same checks are used everywhere,
+   and the page can show a clear inline error without relying on browser
+   pop-ups or alerts.
 */
 
-// --- Regex patterns, kept in one place so they're easy to find and tweak ---
+// The regex rules are kept here so they are easy to review and adjust.
 const VALIDATION_RULES = {
 
-  // Full name: letters, spaces and hyphens only (covers double-barrelled
-  // names like "Anne-Marie"). No digits, no symbols.
+  // Full name: letters, spaces, and hyphens only. This covers names like "Anne-Marie" without allowing digits or symbols.
   fullname: {
     pattern: /^[A-Za-z]+(?:[\s-][A-Za-z]+)+$/,
     message: "Enter your full name using letters only (first and last name)."
   },
 
-  // Student ID: locked to the cohort format we agreed on — 2028-BSE-045
+  // Student ID must follow the set ALU format: 2028-BSE-045.
   studentid: {
     pattern: /^2028-BSE-\d{3}$/,
     message: "Student ID must look like 2028-BSE-000."
   },
 
-  // Student email: accepts the ALU shorthand format (s.foli@alustudent.com)
-  // — a single initial, a dot, a surname, then the fixed domain.
-  // We keep this specific (rather than "any email") because the brief asks
-  // for institutional email matching, not a generic email checker.
+  // Student email follows the ALU pattern: a single initial, a dot, surname, then the fixed student domain.
+  // This is intentional rather than a generic email check, because the brief expects the institutional format.
   email: {
     pattern: /^[a-z]\.[a-z]+@alustudent\.com$/i,
     message: "Use your student email format, e.g. s.foli@alustudent.com"
   },
 
-  // Mauritian phone number: the standard international format is +230
-  // followed by a space, then the 8-digit number split into two groups
-  // of four (e.g. +230 5712 3456). This is the one format we accept —
-  // no bare local numbers, no dashes, no missing spaces.
+  // Mauritian phone numbers must use the +230 international format with the usual space split, such as +230 5712 3456.
   phone: {
     pattern: /^\+230 \d{4} \d{4}$/,
     message: "Enter your number in the standard format, e.g. +230 5712 3456."
   },
 
-  // Contact page message box: just make sure they didn't submit it empty
-  // or with only a couple of characters.
+  // The message field should not be empty and should be long enough to be meaningful.
   message: {
     pattern: /^.{10,}$/,
     message: "Please write at least 10 characters so we know what you mean."
@@ -75,9 +56,7 @@ function validateField(input, ruleKey) {
   const errorEl = document.getElementById(`error-${ruleKey}`);
   const value = input.value.trim();
 
-  // Empty field: mark invalid but with a gentler "required" message
-  // rather than the specific format message — it's less confusing for
-  // someone who just hasn't typed anything yet.
+  // Empty fields should feel gentler than format errors, since the user may just not have typed anything yet.
   if (value === "") {
     group.classList.remove("is-valid");
     group.classList.add("is-invalid");
@@ -108,11 +87,10 @@ function attachLiveValidation(fieldId, ruleKey) {
   const input = document.getElementById(fieldId);
   if (!input) return; // field might not exist on this particular page
 
-  // Validate as they type — gives the fastest possible feedback
+  // Check the field while the student types so feedback appears immediately.
   input.addEventListener("input", () => validateField(input, ruleKey));
 
-  // Also validate on blur, in case someone tabs through without typing
-  // (e.g. autofill) — makes sure the state is never left unchecked
+  // Also validate on blur in case the student tabs through without typing, or autofill fills the value in.
   input.addEventListener("blur", () => validateField(input, ruleKey));
 }
 
@@ -130,28 +108,26 @@ function attachPhoneMask(fieldId) {
 
   const PREFIX = "+230 ";
 
-  // Pulls out just the digits the student has actually typed, ignoring
-  // the prefix itself and anything that isn't a number, capped at 8
+  // Strip out the country code and any non-numeric characters, keeping only the 8 digits the student actually types.
   function extractDigits(value) {
     const afterPrefix = value.startsWith("+230") ? value.slice(4) : value;
     return afterPrefix.replace(/\D/g, "").slice(0, 8);
   }
 
-  // Rebuilds the full "+230 XXXX XXXX" string from those digits
+  // Rebuild the full +230 XXXX XXXX format from those digits.
   function formatValue(digits) {
     if (digits.length <= 4) return PREFIX + digits;
     return PREFIX + digits.slice(0, 4) + " " + digits.slice(4);
   }
 
-  // Pre-fill the prefix immediately, before the student has touched
-  // the field at all
+  // Prefill the +230 prefix right away so the field already looks like the intended format.
   if (!input.value) {
     input.value = PREFIX;
   }
 
   input.addEventListener("focus", () => {
     if (!input.value) input.value = PREFIX;
-    // Land the cursor after the prefix rather than at the very start
+    // Place the caret after the prefix so the student starts typing in the right spot.
     const pos = input.value.length;
     requestAnimationFrame(() => input.setSelectionRange(pos, pos));
   });
@@ -163,7 +139,7 @@ function attachPhoneMask(fieldId) {
     input.setSelectionRange(pos, pos);
   });
 
-  // Stops backspace/delete from eating into the fixed prefix
+  // Prevent backspace and delete from disturbing the fixed prefix.
   input.addEventListener("keydown", (event) => {
     const cursorAtOrBeforePrefix = input.selectionStart <= PREFIX.length;
     if (event.key === "Backspace" && cursorAtOrBeforePrefix) {

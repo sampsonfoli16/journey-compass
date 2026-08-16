@@ -1,11 +1,10 @@
 /*
    scoring.js
-   The scoring engine for the quiz. Keeps a running tally of points per
-   soft-skill category, and applies a small bonus for answering quickly
-   and answering several questions in a row without hesitating (a "streak").
+   Keeps a running tally of points by soft-skill category and adds a small
+   boost for quick, confident answers.
 */
 
-// A fresh, empty scorecard — one entry per category we track
+// A fresh scorecard with one slot for each category we track.
 function createEmptyScores() {
   return {
     communication: 0,
@@ -29,9 +28,8 @@ function createEmptyScores() {
  * @returns {number} the multiplier that was applied, so the UI can show it
  */
 function applyAnswerScore(runningScores, answerScores, secondsTaken, streakCount) {
-  // Quick answers (under 6 seconds) build a streak; slower answers reset it.
-  // This isn't about punishing thoughtful answers — it's a small reward
-  // for confident, decisive responses, which is itself a Time Management signal.
+  // A fast answer adds to the streak; a slower one resets it.
+  // This is meant as a small nudge for decisive choices rather than a punishment for thinking carefully.
   const isQuickAnswer = secondsTaken < 6;
 
   let multiplier = 1;
