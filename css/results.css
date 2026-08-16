@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Results Page Styles
-   ========================================================================== */
+/* Results Page Styles */
 
 .results-main {
   max-width: 840px;
@@ -8,7 +6,7 @@
   padding: var(--space-lg);
 }
 
-/* ============ Empty state (no sessionStorage results found) ============ */
+/* Empty state (no sessionStorage results found) */
 .results-empty {
   text-align: center;
   max-width: 480px;
@@ -25,7 +23,7 @@
   margin-bottom: var(--space-md);
 }
 
-/* ============ Hero: greeting + compass ============ */
+/* Hero: greeting + compass */
 .results-hero {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr;
@@ -85,7 +83,7 @@
   margin-top: var(--space-xs);
 }
 
-/* ============ Canvas chart ============ */
+/* Canvas chart */
 .chart-section {
   margin-bottom: var(--space-xl);
 }
@@ -110,7 +108,7 @@
   }
 }
 
-/* ============ Score breakdown ============ */
+/* Score breakdown */
 .score-breakdown {
   margin-bottom: var(--space-xl);
 }
@@ -176,7 +174,7 @@
   transition: width 900ms ease;
 }
 
-/* ============ Learning Journey Plan card ============ */
+/* Learning Journey Plan card */
 .journey-plan {
   margin-bottom: var(--space-xl);
 }
@@ -217,14 +215,14 @@
   font-weight: 500;
 }
 
-/* ============ Actions ============ */
+/* Actions */
 .results-actions {
   display: flex;
   gap: var(--space-sm);
   flex-wrap: wrap;
 }
 
-/* ============ Responsive ============ */
+/* Responsive */
 @media (max-width: 640px) {
   .results-hero {
     grid-template-columns: 1fr;

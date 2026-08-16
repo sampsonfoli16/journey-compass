@@ -1,11 +1,9 @@
-/* ==========================================================================
-   Journey Compass — Global Stylesheet
+/* Journey Compass — Global Stylesheet
    Author: Sampson Foli
    Purpose: Design tokens (colours, type, spacing) and layout rules shared
    across all four pages. Page-specific styles live in their own files
    (landing.css, quiz.css, results.css, contact.css) and load after this
-   one so they can override where needed.
-   ========================================================================== */
+   one so they can override where needed. */
 
 /* --- Google Fonts ---
    Space Grotesk  = headings on light pages (geometric, confident)

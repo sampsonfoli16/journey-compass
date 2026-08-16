@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Quiz Page Styles
-   ========================================================================== */
+/* Quiz Page Styles */
 
 .quiz-main {
   max-width: 720px;
@@ -8,7 +6,7 @@
   padding: var(--space-lg);
 }
 
-/* ============ Timer ============ */
+/* Timer */
 .timer-display {
   display: flex;
   align-items: center;
@@ -38,7 +36,7 @@
   50% { opacity: 0.6; }
 }
 
-/* ============ Progress bar + compass ============ */
+/* Progress bar + compass */
 .progress-area {
   margin-bottom: var(--space-lg);
 }
@@ -81,7 +79,7 @@
   transition: transform var(--transition-mid);
 }
 
-/* ============ Question card ============ */
+/* Question card */
 .question-card {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
@@ -123,7 +121,7 @@
   line-height: 1.35;
 }
 
-/* ============ MCQ options ============ */
+/* MCQ options */
 .options-list {
   list-style: none;
   display: flex;
@@ -160,7 +158,7 @@
   cursor: not-allowed;
 }
 
-/* ============ Audio question ============ */
+/* Audio question */
 .audio-controls {
   display: flex;
   align-items: center;
@@ -192,7 +190,7 @@
   color: var(--color-text-muted);
 }
 
-/* ============ Hotspot question ============ */
+/* Hotspot question */
 .hotspot-wrap {
   position: relative;
   border-radius: var(--radius);
@@ -215,7 +213,7 @@
   text-align: center;
 }
 
-/* ============ Timeout overlay ============ */
+/* Timeout overlay */
 .timeout-overlay {
   position: fixed;
   inset: 0;
@@ -266,7 +264,7 @@
   opacity: 0.5;
 }
 
-/* ============ Responsive ============ */
+/* Responsive */
 @media (max-width: 600px) {
   .quiz-main {
     padding: var(--space-md);
