@@ -1,8 +1,8 @@
-/* ==========================================================================
+/*
    Landing Page Styles — dark hero + light form section
-   ========================================================================== */
+    */
 
-/* ============ Dark hero wrapper (contains header + hero content) ============ */
+/* Dark hero wrapper (contains header + hero content) */
 .hero-dark {
   background: linear-gradient(180deg, var(--color-dark-bg) 0%, var(--color-dark-bg-alt) 100%);
   color: var(--color-text-on-dark);
@@ -13,7 +13,7 @@
   font-size: 0.85rem;
 }
 
-/* ============ Hero content ============ */
+/* Hero content */
 .hero {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -85,7 +85,7 @@
   flex-wrap: wrap;
 }
 
-/* ============ Hero visual: compass panel ============
+/* Hero visual: compass panel
    Fixed pixel dimensions + overflow:hidden is what actually prevents the
    overflow bug — the SVG can never render larger than this box, no
    matter what viewBox math is happening inside it. */
@@ -136,7 +136,7 @@
   letter-spacing: 0.04em;
 }
 
-/* ============ How It Works section ============ */
+/* How It Works section */
 .section-eyebrow {
   display: inline-block;
   color: var(--color-text-muted);
@@ -207,7 +207,7 @@
   font-size: 0.9rem;
 }
 
-/* ============ Form section (light, below the hero) ============ */
+/* Form section (light, below the hero) */
 .form-section-wrap {
   padding: 5rem var(--space-lg);
 }
@@ -238,7 +238,7 @@
   margin-top: var(--space-xs);
 }
 
-/* ============ Responsive ============ */
+/* Responsive */
 @media (max-width: 900px) {
   .steps-grid {
     grid-template-columns: 1fr 1fr;
