@@ -73,6 +73,7 @@
 
 #results-needle {
   transition: transform 700ms ease;
+  transform-origin: 100px 100px;
 }
 
 .results-compass-caption {
