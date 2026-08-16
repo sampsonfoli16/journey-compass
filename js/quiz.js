@@ -1,10 +1,10 @@
-/* ==========================================================================
+/*
    quiz.js
    Orchestrates the whole quiz: loads questions.json, renders the current
    question (in whichever of the three formats it is), records answers
    into the scoring engine, drives the countdown timer, and hands off to
    the Results page once everything is answered or time runs out.
-   ========================================================================== */
+*/
 
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -1,11 +1,11 @@
-/* ==========================================================================
+/* 
    landing.js
    Handles the student details form on the Landing page:
-   - attaches live validation to each field
-   - blocks submission until everything passes
-   - saves the student's details so the Results page can greet them by
+    attaches live validation to each field
+    blocks submission until everything passes
+    saves the student's details so the Results page can greet them by
      name later, then sends them into the quiz
-   ========================================================================== */
+    */
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("student-form");

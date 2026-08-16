@@ -1,4 +1,4 @@
-/* ==========================================================================
+/*
    validation.js
    Shared inline validation engine for Journey Compass.
 
@@ -17,7 +17,7 @@
 
    Nothing here uses alert() or the browser's built-in validation popups —
    everything is rendered directly in the page as the brief requires.
-   ========================================================================== */
+*/
 
 // --- Regex patterns, kept in one place so they're easy to find and tweak ---
 const VALIDATION_RULES = {

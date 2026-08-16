@@ -12,7 +12,7 @@
     <line x1="540" y1="20" x2="540" y2="480"/>
   </g>
 
-  <!-- ============ ZONE 1: Quiet corner desk (top-left) ============ -->
+  <!-- ZONE 1: Quiet corner desk (top-left) -->
   <g id="zone-quiet-desk">
     <rect x="50" y="50" width="200" height="140" fill="#F0F5FF" stroke="#003DA5" stroke-width="1.5" stroke-dasharray="4 4" rx="8"/>
     <!-- desk -->
@@ -27,7 +27,7 @@
     <text x="150" y="215" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#111827">Quiet Corner Desk</text>
   </g>
 
-  <!-- ============ ZONE 2: Group table (center) ============ -->
+  <!-- ZONE 2: Group table (center) -->
   <g id="zone-group-table">
     <rect x="300" y="150" width="220" height="180" fill="#FFF3F3" stroke="#CE1126" stroke-width="1.5" stroke-dasharray="4 4" rx="8"/>
     <!-- round table -->
@@ -40,7 +40,7 @@
     <text x="410" y="355" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#111827">Group Table</text>
   </g>
 
-  <!-- ============ ZONE 3: Presentation / front of room (right) ============ -->
+  <!-- ZONE 3: Presentation / front of room (right) -->
   <g id="zone-presentation">
     <rect x="570" y="60" width="180" height="200" fill="#FFF9EF" stroke="#CE1126" stroke-width="0" rx="8"/>
     <rect x="570" y="60" width="180" height="200" fill="none" stroke="#111827" stroke-width="1.5" stroke-dasharray="4 4" rx="8"/>

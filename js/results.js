@@ -1,4 +1,4 @@
-/* ==========================================================================
+/*
    results.js
    Reads the results quiz.js saved to sessionStorage (jc_results) and the
    student details landing.js saved earlier (jc_student), then renders:
@@ -6,7 +6,7 @@
    - a compass needle pointing at the student's top category
    - a score bar per category
    - a "Learning Journey Plan" card for their top category
-   ========================================================================== */
+*/
 
 // Static copy for each category: what the compass needle points to, the
 // blurb describing the strength, and a concrete next-step suggestion.

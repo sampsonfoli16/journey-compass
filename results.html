@@ -34,14 +34,14 @@
 
   <main class="results-main" id="results-main">
 
-    <!-- ============ Fallback shown if someone lands here with no results saved ============ -->
+    <!-- Fallback shown if someone lands here with no results saved -->
     <section class="results-empty" id="results-empty" hidden>
       <h1>No results to show yet</h1>
       <p>Looks like you haven't completed the quiz this visit, since sessionStorage doesn't carry over once it's gone.</p>
       <a href="index.html" class="btn btn-primary">Take the quiz &rarr;</a>
     </section>
 
-    <!-- ============ Main results content, populated by results.js ============ -->
+    <!-- Main results content, populated by results.js -->
     <div id="results-content" hidden>
 
       <section class="results-hero">
@@ -68,7 +68,7 @@
         </div>
       </section>
 
-      <!-- ============ Canvas chart — pure HTML5 Canvas 2D, no libraries ============ -->
+      <!-- Canvas chart — pure HTML5 Canvas 2D, no libraries -->
       <section class="chart-section" aria-label="Score chart">
         <h2>Your skills breakdown</h2>
         <div class="chart-wrap">
@@ -76,13 +76,13 @@
         </div>
       </section>
 
-      <!-- ============ Score bars, one per category ============ -->
+      <!-- Score bars, one per category -->
       <section class="score-breakdown" aria-label="Score breakdown, listed">
         <h2>Score breakdown</h2>
         <ul class="score-list" id="score-list"></ul>
       </section>
 
-      <!-- ============ Learning Journey Plan ============ -->
+      <!-- Learning Journey Plan -->
       <section class="journey-plan" id="journey-plan">
         <h2>Your Learning Journey Plan</h2>
         <div class="plan-card" id="plan-card">

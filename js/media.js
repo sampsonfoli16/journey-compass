@@ -1,4 +1,4 @@
-/* ==========================================================================
+/*
    media.js
    Handles the two interactive media question types required by the brief:
 
@@ -8,7 +8,7 @@
    2. IMAGE HOTSPOT QUESTION — the student clicks somewhere on an image,
       and we work out which named "zone" (defined in questions.json as a
       percentage box) their click falls inside.
-   ========================================================================== */
+*/
 
 /**
  * Wires up custom Play / Pause / Replay buttons to a given <audio> element.

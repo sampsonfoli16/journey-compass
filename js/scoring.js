@@ -1,9 +1,9 @@
-/* ==========================================================================
+/*
    scoring.js
    The scoring engine for the quiz. Keeps a running tally of points per
    soft-skill category, and applies a small bonus for answering quickly
    and answering several questions in a row without hesitating (a "streak").
-   ========================================================================== */
+*/
 
 // A fresh, empty scorecard — one entry per category we track
 function createEmptyScores() {

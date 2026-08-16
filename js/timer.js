@@ -1,4 +1,4 @@
-/* ==========================================================================
+/*
    timer.js
    A small, reusable countdown timer built on setInterval/clearInterval.
 
@@ -7,7 +7,7 @@
    second (so the UI can update), and one that fires once when time runs
    out. Keeping it generic like this means it could be reused for any
    other timed feature later without rewriting it.
-   ========================================================================== */
+*/
 
 function createCountdownTimer(durationSeconds, onTick, onExpire) {
   let remaining = durationSeconds;
